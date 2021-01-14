@@ -1,0 +1,51 @@
+package Clases;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Metodos 
+{
+    int aux;
+    List<Integer> Numeros = new ArrayList<Integer>();
+    
+    public void Insertar(int Numero)
+    {
+        Numeros.add(Numero);
+    }
+    
+    public void Mostrar()
+    {
+        System.out.println("-----------Datos Ordenados-----------");
+        System.out.println(Numeros);
+    }
+    
+    public void ShellSort()
+    {
+        int Salto, i, j, k;
+        Salto = Numeros.size()/2;
+        while(Salto>0)
+        {
+            for(i=Salto;i<Numeros.size();i++)
+            {
+                j=i-Salto;
+                
+                while(j>=0)
+                {
+                    k=j+Salto;
+                    if (Numeros.get(j) <= Numeros.get(k))
+                    {
+                        j=-1;
+                    }
+                    else
+                    {
+                        aux=Numeros.get(j);
+                        Numeros.set(j, Numeros.get(k));
+                        Numeros.set(k, aux);
+                        j-=Salto;
+                    }
+                }
+            }
+            Salto=Salto/2;
+        }
+    }
+}
